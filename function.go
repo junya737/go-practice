@@ -4,40 +4,51 @@ package main
 
 import "fmt"
 
+type Person struct {
+	Name string
+	Age  int
+}
+
+// コンストラクタ
+func NewPerson(name string, age int) *Person {
+	p := new(Person)
+	p.Name = name
+	p.Age = age
+	return p
+}
+
+// value receiver
+// pのコピーを受け取るので，値は変更されない．構造体は値渡し．
+func (p Person) setAge(age int) {
+	p.Age = age
+}
+
+// pointer receiver
+// pのポインタを受け取るので，値が変更される．
+func (p *Person) setAgePointer(age int) {
+	p.Age = age
+}
+
+func (p Person) sayHello() {
+	fmt.Println("Hello, I'm", p.Name, ",", p.Age, "years old")
+}
+
 func main() {
-	var x int = 10
-	const y string = "hello"
 
-	if x > 1 {
-		fmt.Println(y)
-	} else {
-		fmt.Println("world")
-	}
+	p := Person{Name: "Taro", Age: 20}
 
-	for i := 0; i < 10; i++ {
-		fmt.Println(i)
-		break
-	}
-	var z string
-	z = switch_practice(33)
-	fmt.Println(z)
+	// バリューレシーブなので値は変更できない
+	p.setAge(100)
+	p.sayHello()
 
-	var arry = []int{1, 2, 3, 4, 5}
-	fmt.Println(arry)
-	arry[3] = 100
-	fmt.Println(arry)
-	arry = append(arry, 200)
-	fmt.Println(arry)
+	// ポインタレシーブなので値が変更される
+	q := Person{Name: "Jiro", Age: 30}
+	q.setAgePointer(100)
+	q.sayHello()
 
-	// map[type]typep
-	m := make(map[string]int)
-	m["key"] = 100
-	fmt.Println(m)
+	r := NewPerson("Saburo", 40)
+	r.sayHello()
 
-	mp := map[string]int{
-		"abc": 200,
-	}
-	fmt.Println(mp)
 }
 
 func switch_practice(x int) string {
