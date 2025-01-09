@@ -22,6 +22,12 @@ func main() {
 	z = switch_practice(33)
 	fmt.Println(z)
 
+	var arry = []int{1, 2, 3, 4, 5}
+	fmt.Println(arry)
+	arry[3] = 100
+	fmt.Println(arry)
+	arry = append(arry, 200)
+	fmt.Println(arry)
 }
 
 func switch_practice(x int) string {
