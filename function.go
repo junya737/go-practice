@@ -33,6 +33,24 @@ func (p Person) sayHello() {
 	fmt.Println("Hello, I'm", p.Name, ",", p.Age, "years old")
 }
 
+// 継承
+type Animal struct {
+	Name string
+}
+
+type Dog struct {
+	Animal
+	Breed string
+}
+
+// コンストラクタ
+func NewDog(name string, breed string) *Dog {
+	d := new(Dog)
+	d.Name = name
+	d.Breed = breed
+	return d
+}
+
 func main() {
 
 	p := Person{Name: "Taro", Age: 20}
@@ -59,6 +77,13 @@ func main() {
 	var z *int = &x
 	*z = 3
 	fmt.Println(x, *z)
+
+	// 継承
+	dog := Dog{Animal: Animal{Name: "Pochi"}, Breed: "Shiba"}
+	fmt.Println(dog.Name, dog.Breed)
+
+	dog2 := NewDog("Hachi", "Akita")
+	fmt.Println(dog2.Name, dog2.Breed)
 
 }
 
