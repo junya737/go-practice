@@ -28,6 +28,16 @@ func main() {
 	fmt.Println(arry)
 	arry = append(arry, 200)
 	fmt.Println(arry)
+
+	// map[type]typep
+	m := make(map[string]int)
+	m["key"] = 100
+	fmt.Println(m)
+
+	mp := map[string]int{
+		"abc": 200,
+	}
+	fmt.Println(mp)
 }
 
 func switch_practice(x int) string {
