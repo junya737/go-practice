@@ -51,6 +51,27 @@ func NewDog(name string, breed string) *Dog {
 	return d
 }
 
+// インターフェース
+type AnimalInterface interface {
+	Say() string
+}
+
+type Cat struct {
+	Animal
+	Breed string
+}
+
+func NewCat(name string, breed string) *Cat {
+	c := new(Cat)
+	c.Name = name
+	c.Breed = breed
+	return c
+}
+
+func (c Cat) Say() string {
+	return "Meow, I'm " + c.Name + ", " + c.Breed
+}
+
 func main() {
 
 	p := Person{Name: "Taro", Age: 20}
@@ -84,6 +105,9 @@ func main() {
 
 	dog2 := NewDog("Hachi", "Akita")
 	fmt.Println(dog2.Name, dog2.Breed)
+
+	cat := NewCat("Tama", "Munchkin")
+	fmt.Println(cat.Say())
 
 }
 
