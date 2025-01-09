@@ -49,6 +49,17 @@ func main() {
 	r := NewPerson("Saburo", 40)
 	r.sayHello()
 
+	var x int = 1
+	y := x
+	x = 2
+	// 値渡し．変更されない
+	fmt.Println(x, y)
+
+	// ポインタ渡し．変更される．
+	var z *int = &x
+	*z = 3
+	fmt.Println(x, *z)
+
 }
 
 func switch_practice(x int) string {
